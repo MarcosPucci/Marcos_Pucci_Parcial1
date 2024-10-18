@@ -64,7 +64,7 @@ public class Main {
         Sistema sistema = new Sistema(servicios);
         
         sistema.agregarGastronomia("Pastel de papa", 400.0, 2, "151001", 0.2, true, LocalDate.of(2020, 4, 10));
-        sistema.agregarHospedaje("Departamento para 2", 1760.0, "211510", 0.22, false, LocalDate.of(2020, 10, 28));
+        sistema.agregarHospedaje("Departamento para 2", 1760.0, "211510", 0.22, true, LocalDate.of(2020, 10, 28));
         
         System.out.println("4-1");
         System.out.println(sistema.traerServicio(true));

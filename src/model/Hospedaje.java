@@ -22,6 +22,11 @@ public class Hospedaje extends Servicio{
         this.precioPorNoche = precioPorNoche;
     }
 
+    /*Funcion para calcular el precio que deberia pagar el usuario, evaluando 
+    si es un dia de semana y el servicio esta en promocion, el precio bajara
+    segun corresponda.
+    Toma por parametros una fecha para evaluar la promocion.
+    Retorna el precio final calculado.*/
     @Override
     public double calcularPrecioFinal(LocalDate dia) {
         double precioFinal = this.precioPorNoche;

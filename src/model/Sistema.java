@@ -19,6 +19,10 @@ public class Sistema {
         this.lstServicio = lstServicio;
     }
     
+    /*Funcion para obtener el servicio registrado en el sistema segun su codigo.
+    Toma por parametros un codigo a evaluar.
+    Retorna el servicio que coincida con el codigo pasado, en caso de que este
+    no se encuentre en el sistema, retorna null.*/
     public Servicio traerServicio(String codServicio)
     {
         for(Servicio s : this.lstServicio)
@@ -30,20 +34,36 @@ public class Sistema {
         }
         return null;
     }
-    
+    /*Funcion para obtener los servicios en promocion (o no) registrados en el sistema.
+    Toma por parametros un booleano que indica si se buscan servicios en promocion.
+    Retorna los servicios que coincidan con las especificaciones pasadas.*/
     public List<Servicio> traerServicio(boolean enPromocion)
     {
         List<Servicio> serviciosEnPromocion = new ArrayList<>();
         for(Servicio s : this.lstServicio)
         {
-            if(s.isEnPromocion())
+            if(enPromocion)
+            {
+                if(s.isEnPromocion())
             {
                 serviciosEnPromocion.add(s);
+            }
+            }
+            else
+            {
+                    if(!s.isEnPromocion())
+            {
+                serviciosEnPromocion.add(s);
+            }
             }
         }
         return serviciosEnPromocion;
     }
-    
+    /*Funcion para obtener los servicios registrados en el sistema, segun si 
+    estan en promocion (o no) y que correspondan con la fecha pasada por el usuario.
+    Toma por parametros un booleano que indica si se buscan servicios en promocion
+    y una fecha a buscar.
+    Retorna los servicios que coincidan con las especificaciones pasadas.*/
     public List<Servicio> traerServicio(boolean enPromocion, LocalDate dia)
     {
         List serviciosPorDia = new ArrayList<>();
@@ -51,13 +71,19 @@ public class Sistema {
         {
             if(s.getFechaDelServicio().equals(dia))
             {
-                serviciosPorDia.add(s);
+                if(enPromocion == s.isEnPromocion())
+                {
+                    serviciosPorDia.add(s);
+                }
             }
         }
         return serviciosPorDia;
     }
-    
-    /*Agrego en los parametros de la funcion el atributo "fechaDelServicio
+    /*Funcion para agregar una gastronomia al sistema.
+    Toma por parametros todo lo necesario para crear una gastronomia.
+    Retorna true si la gastronomia se pudo agregar al sistema, y tira una 
+    excepcion en caso de que este ya se encuentre.
+    Agrego en los parametros de la funcion el atributo "fechaDelServicio
     para poder agregar la fecha de inicio del servicio."*/
     public boolean agregarGastronomia(String gastronomia, double precio, 
         int diaSemDesc, String codServicio, double porcentajeDescuento, 
@@ -76,6 +102,12 @@ public class Sistema {
         return true;
     }
     
+    /*Funcion para agregar un hospedaje al sistema.
+    Toma por parametros todo lo necesario para crear un hospedaje.
+    Retorna true si el hospedaje se pudo agregar al sistema, y tira una 
+    excepcion en caso de que este ya se encuentre.
+    Agrego en los parametros de la funcion el atributo "fechaDelServicio
+    para poder agregar la fecha de inicio del servicio."*/
     public boolean agregarHospedaje(String hospedaje, double precioPorNoche, 
         String codServicio, double porcentajeDescuento, 
         boolean enPromocion, LocalDate fechaDelServicio)

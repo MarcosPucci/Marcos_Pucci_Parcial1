@@ -66,7 +66,6 @@ public abstract class Servicio {
         this.fechaDelServicio = fechaDelServicio;
     }
     
-    
     public abstract double calcularPrecioFinal(LocalDate dia);
 
     @Override

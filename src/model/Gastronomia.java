@@ -24,6 +24,12 @@ public class Gastronomia extends Servicio{
         this.diaSemDesc = diaSemDesc;
     }
 
+    /*Funcion para calcular el precio que deberia pagar el usuario, evaluando 
+    si el dia pasado por los parametros es igual al dia en que el servicio esta 
+    en promo, y evalua si el servicio esta en promocion, el precio bajara
+    segun corresponda.
+    Toma por parametros una fecha para evaluar la promocion.
+    Retorna el precio final calculado.*/
     @Override
     public double calcularPrecioFinal(LocalDate dia) {
         double precioFinal = this.precio;
